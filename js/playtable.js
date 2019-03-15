@@ -1,7 +1,6 @@
 const desc = document.querySelector("#card");
 const desc_hide = document.querySelector("#hide_butt");
-const desc_hide_class = "hide";
-const desc_show_butt = document.querySelector("#show_butt");
+const desc_hide_class = "hide_desc";
 const desc_show_butt_class = "show_butt";
 
 const show_class = 'show';
@@ -27,13 +26,19 @@ for(let i = 0; i < lifepoints.length; ++i){
     lifepoints[i][0].onmouseenter = () => show(lifepoints[i], i);
     lifepoints[i][0].onmouseleave = () => hide(lifepoints[i], i);
 }
-desc_hide.onmousedown = function(){
-    desc.classList.add(desc_hide_class);
-    // setTimeout(()=>{
-        desc_show_butt.classList.add(desc_show_butt_class);
-    // }, 400);
-}
-desc_show_butt.onmousedown = function(){
+let desc_show_func;
+let desc_hide_func;
+
+desc_show_func = function(){
     desc.classList.remove(desc_hide_class);
-    desc_show_butt.classList.remove(desc_show_butt_class);
+    desc_hide.classList.remove(desc_show_butt_class);
+    desc_hide.onmousedown = desc_hide_func;
 }
+desc_hide_func = function(){
+    desc.classList.add(desc_hide_class);
+    desc_hide.classList.add(desc_show_butt_class);
+
+    desc_hide.onmousedown = desc_show_func;
+}
+desc_hide.onmousedown = desc_hide_func;
+

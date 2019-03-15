@@ -256,34 +256,10 @@ body{
 	margin-bottom: 1%;
 	z-index: 1;
 }
+.hide_desc{ /* on click hide butt */
+	transform: translate(calc(-100% - 18px), 5px) !important;
+}
 #hide_butt{
-	position: absolute;
-	display: inline-block;
-	right: 15px;
-	top: 16px;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	color: white;
-	font-weight: bolder;
-	text-align: center;
-	line-height: 25px;
-	z-index: 2;
-	user-select: none;
-	cursor: default;
-	transition: color 0.3s ease-in, transform 0.4s cubic-bezier(0.18, 1.04, 0.72, 0.97);
-	/* background-color: red; */
-	padding-right: 3px; /* Text Position Fix */
-	background: linear-gradient(to bottom right, white 30%, green 60%, red 70%);
-}
-#hide_butt:hover{
-	color: black;
-	transform: rotate(360deg);
-}
-.hide{ /* on click hide butt */
-	transform: translate(-290px, 5px) !important;
-}
-#show_butt{
 	position: absolute;
 	top: 50%;
 	right: -24px; /* -10 - width(Because desc is 10px out of the page) - body padding(6px) + 2(to touch body wall)*/
@@ -293,19 +269,23 @@ body{
 	min-width: 10px;
 	height: 150px;
 	line-height: 150px; /* Same as height */
+	font-weight: bold;
 
 	padding: 0px 3px;
 	transform: translate(-24px, -50%);
-	transition: transform 0.3s ease-in;
-	background: #383838;
+	transition: transform 0.4s ease-out, background 0.2s ease-in;
+	background: transparent;
 	color: white;
 }
-#show_butt:hover{
-	background: #181818;
+#hide_butt:hover{
+	background: black;
 }
 .show_butt{
-	display: block !important;
-	transform: translate(0, -50%) !important;
+	transform: translate(0, -50%) scaleX(-1) !important;
+	background: #383838 !important;
+}
+.show_butt:hover{
+	background: #151515 !important;
 }
 #card_name h1{
 	font-size: 2em;
