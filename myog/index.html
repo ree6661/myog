@@ -4,15 +4,16 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" type="text/css" href="css/myog.css">
+		<link rel="prefetch stylesheet" type="text/css" href="css/myog.css">
+		<link rel="preload" href="PNG/background.png" as="image">
 	</head>
 	<body>
 		<div class="wrapper">
+			<header>
+				<img src="PNG/logo.png">
+				<h1>Login</h1>
+			</header>
 			<form class="form" method="POST" onsubmit="btt('MainMenu');return false;">
-				<header>
-					<img src="PNG/logo.png">
-					<h1>Login</h1>
-				</header>
 				<div class="group">
 					<div class="field-group">
 						<input name="username" type="text" id="username" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
@@ -27,7 +28,7 @@
 				</div>
 				<footer>
 					<input class="btn" type="button" onmousedown="btt('register')" value="Register">
-					<input class="btn" type="submit" onmousedown="clickSound();" value="Login">
+					<input name="login-submit" class="btn" type="submit" onmousedown="clickSound();" value="Login">
 				</footer>
 			</form>
 		<script src="js/moyg.js"></script>

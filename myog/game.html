@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/myog.css">
+        <link rel="prefetch stylesheet" type="text/css" href="css/myog.css">
+		<link rel="preload" href="PNG/background.png" as="image">
         <title>Game Settings</title>
         <style>
             .group{
@@ -16,7 +17,7 @@
             } 
             .slider {
                 -webkit-appearance: none;
-                width: 100%;
+                width: 70%;
                 height: 15px;
                 border-radius: 5px;
                 background: repeating-linear-gradient(-7deg, orange, yellow 33.3%);
@@ -36,7 +37,7 @@
                 width: 25px;
                 height: 24px;
                 border-radius: 50%;
-               background-image: url("PNG/milenumeye.png");
+                background-image: url("PNG/milenumeye.png");
                 cursor: url("PNG/cursor_h.png") , auto;
             }
             .slider::-moz-range-thumb {
@@ -82,45 +83,24 @@
         </div>
         <script src="js/moyg.js"></script>
         <script>
-            const stringify = function(num){
-                let to_str = num.toString();
-                if(to_str.length == 1) to_str += '.';
-                to_str = to_str + '0'.repeat(4 - to_str.length);
-                return to_str;
-            }
-            const music_func = function(){
-                const group = document.querySelector("#music_group");
+            const stringify = (num) => (num/100).toFixed(2);
+            const do_slider = function(group_name, local_name){
+                const group = document.querySelector(`#${group_name}`);
                 const slider = group.querySelector(".slider");
                 const output = group.querySelector("span");
-                let volume = window.localStorage.getItem("Music_Volume");
+                let volume = window.localStorage.getItem(`${local_name}`);
                 if(volume == null || isNaN(volume)) volume = 0.5;
-                output.innerHTML = stringify(volume);
                 slider.value = volume * 100;
-                slider.oninput = ()=>{
+                output.innerHTML = stringify(slider.value);
+                slider.oninput = () => {
                     let volume = slider.value/100;
                     played.volume = volume;
-                    output.innerHTML = stringify(volume);
+                    output.innerHTML = stringify(slider.value);
                 };
+                if(group_name == "click_group") slider.onmouseup = ()=>{ clickSound(); };
             }
-            const click_func = function(){
-                const group = document.querySelector("#click_group");
-                const slider = group.querySelector(".slider");
-                const output = group.querySelector("span");
-                let volume = window.localStorage.getItem("Click_Volume");
-                if(volume == null || isNaN(volume)) volume = 0.1;
-                output.innerHTML = stringify(volume);
-                slider.value = volume * 100;
-                slider.oninput = ()=>{
-                    let volume = slider.value/100;
-                    se.volume = volume;
-                    output.innerHTML = stringify(volume);
-                };
-                slider.onmouseup = ()=>{
-                    clickSound();
-                }
-            }
-            music_func();
-            click_func();
+            do_slider('music_group', 'Music_Volume');
+            do_slider('click_group', 'Click_Volume');
             const settings_save = function(){
                 window.localStorage.setItem("Music_Volume", document.querySelector("#music").value/100);
                 window.localStorage.setItem("Click_Volume", document.querySelector("#click").value/100);

@@ -5,16 +5,12 @@
 	box-sizing: border-box;
 	cursor: url(../PNG/cursor.png) , auto;
 }
-*::hover{
-	cursor: url(../PNG/cursor_h.png) , auto;
-}
 input{
   outline: none;
 }
 input[type=text], input[type=password], input[type=email]{
 	border: 0;
 }
-
 
 /* Set page to fill the screen */
 html, body{
@@ -149,7 +145,7 @@ background-position: 100%,top right,bottom right;
     padding: 40px 50px;
 	margin: 0 auto;
 	transform: translateY(50px);
-    background-image: url('../PNG/divBG.png');
+    background-color: rgba(0,0,0,0.78);
     border-radius: 5px;
     box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
 }
@@ -246,7 +242,8 @@ header h1{
   padding: 0 0.5px;
   margin-left: 2px;
   cursor: text;
-  user-select: none;
+	user-select: none;
+	min-width: 222px;
 }
 /* Input */
 .field-group input{
@@ -257,7 +254,7 @@ header h1{
 .field-group input, footer input{
   transform: translateY(-50%);
 	width: 100%;
-	min-width: 115px;
+	min-width: 222px;
   height: 1.2em;
   font-size: 1.2em;
   box-shadow: 0 1px 0 #dddd1a;
