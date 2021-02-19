@@ -84,7 +84,7 @@
         <script src="js/moyg.js"></script>
         <script>
             const stringify = (num) => (num/100).toFixed(2);
-            const do_slider = function(group_name, local_name){
+            const do_slider = function(group_name, local_name, audioObject){
                 const group = document.querySelector(`#${group_name}`);
                 const slider = group.querySelector(".slider");
                 const output = group.querySelector("span");
@@ -94,16 +94,17 @@
                 output.innerHTML = stringify(slider.value);
                 slider.oninput = () => {
                     let volume = slider.value/100;
-                    played.volume = volume;
+                    audioObject.volume = volume;
                     output.innerHTML = stringify(slider.value);
                 };
                 if(group_name == "click_group") slider.onmouseup = ()=>{ clickSound(); };
             }
-            do_slider('music_group', 'Music_Volume');
-            do_slider('click_group', 'Click_Volume');
+            do_slider('music_group', 'Music_Volume', played);
+            do_slider('click_group', 'Click_Volume', se);
             const settings_save = function(){
                 window.localStorage.setItem("Music_Volume", document.querySelector("#music").value/100);
                 window.localStorage.setItem("Click_Volume", document.querySelector("#click").value/100);
+				BGA();
             }
         </script>
     </body>
