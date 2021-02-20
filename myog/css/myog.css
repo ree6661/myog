@@ -309,6 +309,17 @@ footer{
 	border-color: #474745;
 	color: #42423f;
 }
+.Mute {
+	position: absolute;
+	left: 68.7%;
+	top:20%;
+	background-image: url('../PNG/speaker muted.png');
+	background-color: unset;
+	height: 48px;
+	width: 48px;
+	border: none;
+}
+
 /* Additional Classes to be added with JS after focusing on input */
 .label-focused{
   font-size: 1.4em !important;
