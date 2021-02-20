@@ -55,6 +55,22 @@ function btt(url) {
 	clickSound();
 	delayedHref(url);
 }
+let mute;
+function MuteButtonWithMusic(muteId) {
+	BGA();
+	mute = document.getElementById(muteId);
+	Unmute(muteId);
+}
+function Mute(muteId) { 
+	played.muted = true;
+	document.getElementById("muteImg").src="PNG/speaker muted.png";
+	mute.onclick= Unmute;
+}
+function Unmute(muteId) {
+	played.muted = false;
+	document.getElementById("muteImg").src="PNG/speaker.png";
+	mute.onclick= Mute;
+}
 
 for(let i of document.querySelectorAll('.field-group')){
     const input = i.querySelector('input'); 
